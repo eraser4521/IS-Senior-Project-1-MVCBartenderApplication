@@ -1,0 +1,14 @@
+﻿@model MVCBarApplication.Models.Order
+
+@{
+    ViewData["Title"] = "Order Confirmed";
+}
+
+<div class="text-center">
+    <h1 class="display-4">✅ Order Confirmed!</h1>
+    <p class="lead">Thank you, <strong>@Model.CustomerName</strong>.</p>
+    <p>Your <strong>@Model.Cocktail.Name</strong> will be ready shortly.</p>
+    <p>Your order number is #@Model.Id.</p>
+    <hr />
+    <a asp-action="Menu" class="btn btn-primary">Place Another Order</a>
+</div>

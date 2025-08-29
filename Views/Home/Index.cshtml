@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the MVC Bartender</h1>
+    <p>Please make a selection below.</p>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-6 text-center">
+        <h2>For Patrons</h2>
+        <p>View the menu and order a delicious cocktail.</p>
+        <a class="btn btn-primary btn-lg" asp-controller="Order" asp-action="Menu">View Menu & Order</a>
+    </div>
+    <div class="col-md-6 text-center">
+        <h2>For Bartenders</h2>
+        <p>View the live order queue to prepare drinks.</p>
+        <a class="btn btn-secondary btn-lg" asp-controller="Order" asp-action="Queue">View Order Queue</a>
+    </div>
+</div>

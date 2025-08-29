@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MVCBarApplication.Models.Order>
+
+@{
+    ViewData["Title"] = "Order Queue";
+}
+
+<h1>Order Queue</h1>
+<p>Current orders to be prepared.</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Customer</th>
+            <th>Drink</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderTime.ToString("T")</td>
+                <td>@order.CustomerName</td>
+                <td>@order.Cocktail.Name</td>
+                <td><span class="badge bg-warning text-dark">@order.Status</span></td>
+                <td>
+                    <form asp-action="UpdateStatus" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="orderId" value="@order.Id" />
+                        <button type="submit" class="btn btn-sm btn-success">Ready for Pickup</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="5" class="text-center">The order queue is empty!</td>
+            </tr>
+        }
+    </tbody>
+</table>
